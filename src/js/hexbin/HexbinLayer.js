@@ -194,7 +194,11 @@ L.HexbinLayer = L.SVG.extend({
 		// Generate the map bounds (to be used to filter the hexes to what is visible)
 		var bounds = that._map.getBounds();
 		var size = that._map.getSize();
+		try{
 		bounds = bounds.pad(that.options.radius * 2 / Math.max(size.x, size.y));
+		} catch {
+		console.log('LatLong Error Caught')
+		}
 
 		var bins = that._hexLayout(data);
 
